@@ -1,0 +1,46 @@
+vue 常见指令：
+    指令：相当于扩展heml标签功能
+
+    v-model    一般用于表单元素   双向数据绑定
+
+    循环：
+        v-for="name in arr"    {{value}}:{{$index}}
+
+        v-for="name in json"   {{value}}:{{$index}}--{{$key}}
+        v-for="(k,v) in json"  {{k}}:{{v}}
+
+    事件：
+        v-on:click="函数（)"
+        v-on:click/mouseout/mouseover/dblclick...
+
+    显示隐藏：
+        v-show="true/false"
+
+
+
+事例：
+
+    <script type="text/javascript">
+window.onload=function(){
+  var c=new Vue({
+    el:"#box",//放标签元素
+    data:{//放数据
+      msg:"welcome vue",
+      msg2:123,
+      arr:['gao','jia','yin'],
+      json:{a:'apple',b:"toua"},
+      a:true
+    },
+    methods:{
+        show:function(){
+            alert(this.arr);//this 就是指的是这个new 出来的vue对象（所有他拥有他所有的属性，可以通过this来获取他的数据）
+        },
+        add:function () {
+            // body...
+            this.arr.push("liao liqing");
+        }
+    }
+  });
+}
+
+</script>
