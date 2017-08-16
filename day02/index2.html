@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<style type="text/css">
+		.red{
+			color:red;
+		}
+		.blue{
+			color:blue;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			new Vue({
+				el:"#box",
+				data:{
+					// url:"images/Sbaidu.png",
+					// w:"200px",
+					// red:"red",
+					// b:"blue"
+					json:{
+						red:true,
+						blue:false
+					}
+
+				},
+				methods:{
+					show:function(event){
+						alert(1);
+						// alert(event.keyCode);
+						// event.cancelBubble=true;//阻止冒泡
+						// event.preventDefault();//阻止默认行为
+					},
+					show2:function(){
+						alert(2);
+					}
+				}
+			})
+		}
+	</script>
+	<body>
+		<div id="box">
+		<strong :class="json">aaa</strong>
+		</div>
+		
+		<script src="js/vue_1.28.min.js" ></script>
+	</body>
+</html>
