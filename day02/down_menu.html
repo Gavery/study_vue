@@ -59,7 +59,7 @@
 	<body>
 		<input type="text" name="" v-model="t1" @keyup="get($event)" @keydown.down="changeDown()" @keydown.up.prevent="changeUp()">
 		<ul>
-			<li v-for="value in myData" :class="{gray:$index==now}">
+			<li v-for="value in myData" :class="{gray:$index==now}"> <!--判断样式生效的条件是当下标等于now时生效-->
 				{{value}}
 			</li>
 		</ul>
