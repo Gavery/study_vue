@@ -39,8 +39,64 @@ class和style:
 
         :class="{red:true,blue:false}" //red可以是值，也可以是数据
         ：class="{json}"//推荐
+----------------------------------
 
+        :style="[a,b]"
+        :style="json"
 
-        :style=""
+------------------------------------------------------------------------
+模板：
+    {{msg}}   实现双向数据绑定
+    {{*msg}}  只实现一次数据绑定
+    {{{msg}}}  转义成html代码输出
+----------------------------------------------------------------
+过滤器 ：    过滤模板
+        
+        语法：{{msg|filter}}  {{'msg'|filter}}     {{'WELCOME'|lowercase}}
+        传参： {{msg|filter "参数"}}  eg：{{12|currency '￥'}}
+        upercase
+        lowercase
+        capitalize
+        currency
 
+        {{12|currency}}   $12.00
+        {{12|currency “￥”}}   ￥12.00
+----------------------------------------------------
+交互：
+    $http (ajax)
+    如果vue想做交互，必须要引入vue-resource这个库文件
     
+    get:
+        获取一个普通的文本：
+            this.$http.get("a.txt").then(function(res) {
+                        alert(res.data);
+                        alert(res.status);
+                    }
+                    , function(res) {
+                        alert(res.status);//失败后的情况
+                    }
+
+        给服务器发送数据（用的最多的情况）：
+             this.$http.get("a.php",{
+                传递的参数（json格式）
+                }).then(function(res) {
+                        alert(res.data);
+                        alert(res.status);
+                    }
+                    , function(res) {
+                        alert(res.status);//失败后的情况
+                    }
+    post:
+        this.$http.post("a.php",{
+                        a:1,
+                        b:2
+                    },{
+                        emulateJSON:true//post要有这个标记才能把数据传过去
+                    }).then(function(res) {
+                        alert(res.data);
+                        // alert(res.status);
+                    }
+                    , function(res) {
+                        alert(res.status);
+                    }
+    jsonp

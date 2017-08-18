@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<script type="text/javascript">
+	window.onload=function() {
+		new Vue( {
+			el:"body", data: {
+			}
+			, methods: {
+				get:function() {
+					//promise方式（es6语法）
+					
+					//获取一个普通的文本(get方式)
+					 // this.$http.get("a.php",{
+					 // 	a:1,
+					 // 	b:2
+					 // }).then(function(res) {
+					 // 	alert(res.data);
+					 // 	alert(res.status);
+					 // }
+					
+					// post方式
+					this.$http.post("menu.js",{
+						a:1,
+						b:2
+					},{
+						emulateJSON:true//要有这个标记才能把数据传过去
+					}).then(function(res) {
+						alert(res.data);
+						// alert(res.status);
+					}
+					, function(res) {
+						alert(res.status);
+					}
+					)
+				}
+			}
+		}
+		)
+	}
+	</script>
+	<body>
+		<input type="button" name="" value="按钮" @click="get()">
+	
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+			<script src="js/vue-resource.js"></script>
+	</body>
+</html>
