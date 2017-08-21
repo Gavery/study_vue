@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<style type="text/css">
+		[v-cloak]:{
+		display: none;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		Vue.filter("date",function(input){
+			var oDate=new Date(input);
+			return oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate()+" "+oDate.getHours()+":"+oDate.getMinutes()+":"+oDate.getSeconds();
+		});
+		var vm=new Vue({
+				data:{
+					a:Date.now()
+			},
+			methods:{
+			}
+		}).$mount("#box");
+	}
+	</script>
+	<body>
+		<div id="box" v-cloak>
+	{{a|date}}
+		</div>
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>

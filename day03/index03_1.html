@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<style type="text/css">
+		[v-cloak]:{
+		display: none;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		//自定义过滤器
+		Vue.filter('toDou',function(input,a,b){
+			alert(a+b);
+			return input<10?'0'+input:''+input;
+		});
+
+		Vue.filter("filterHtml",{
+			read:function(input){//model-view
+				return input.replace(/[^<+]>/g,'');
+			},
+			write:function(val){//view-model
+				console.log(val);
+			}
+		});
+	
+		var vm=new Vue({
+				data:{
+				// arr:[1,2,3,4,5,6]
+				   arr:['width','width','background','orange'],
+				   a:9, 
+				   msg:'<strong>hello</strong>'
+			},
+			methods:{
+			show:function(){
+				console.log(1);
+			}
+			}
+		}).$mount("#box");
+	}
+	</script>
+	<body>
+		<div id="box" v-cloak>
+	<input type="text" name="" v-model="msg|filterHtml">
+		<div v-html="msg"></div>
+
+		{{a|toDou 1 2}}<br>
+
+
+		</div>
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>

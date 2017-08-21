@@ -1,0 +1,103 @@
+vue 生命周期：
+    钩子函数：
+
+    created:--->实例已经创建
+    beforeCompile------>编译之前
+    compiled----->编译之后
+    ready------->把文本节点插入到文档中   （相当于window.onload）
+
+    beforeDestroy------>销毁之前
+    destroyed------>销毁之后   
+----------------------------------------
+防止看到花括号闪烁：
+    v-cloak     防止闪烁(用在比较大的段落)
+    但是下面这种情况就不适合用v-cloak,要用v-text属性
+    <span>{{msg}}</span>        
+    eg：
+        <span>{{msg}}</span>
+        <!-- 下面这个是为了解决网速慢出现花括号的现象 -->
+        <span v-text="msg"></span>
+
+   解决这种的花括号问题： {{{msg}}}    vue2.0已经淘汰这种写法了（括号太多麻烦）
+    v-html
+        eg:
+            <span>{{{msg}}}</span><br>
+            <span v-html="msg"></span>
+-----------------------------------------------------------------
+ng:$scope.$watch
+ vue:计算属性
+    computed:{
+                b:{
+                    //默认是get函数
+                    get:function(){
+                        return this.a+1;
+                    },
+                    set:function(val){
+                        this.a=val;
+                    }
+                }
+    }
+
+    computed里面可以放一些业务逻辑：一定要return
+---------------------------------------------------
+vue实例简单方法：
+    vm.$el --->元素
+    vm.$data --->就是data
+    vm.$mount --->手动挂载
+    vm.$options --->访问自定义属性，方法
+    vm.$detroy --->销毁对象
+
+    vm.$log()---->查看数据状态
+----------------------------------------
+循环：v-for="value in data"
+    会有重复的数据:
+        track-by=“索引（$idnex/uid）”
+            eg：     <li v-for="value in arr" track-by="$index">{{value}}</li>
+------------------------------------------------------------------
+过滤器：
+    capitalize     uppercase     currency.....
+
+    常用的过滤器：
+        debounce   配合事件使用（键盘..） 延迟执行
+        eg:<input type="" @keyup="show|debounce 2000" name="">
+    数据配合使用过滤器：
+        limiBy  限制几个数据
+                取几个数据
+                取几个，从哪里开始
+
+                            eg： v-for="val in arr|limitBy 2 arr.length-2"
+                                <li v-for="val in arr|limitBy 2">{{val}}</li>
+
+        filterBy 过滤数据
+            语法： filterBy 变量/"字符串"
+                    eg:v-for="val in arr|filterBy 'o'"                  
+        orderBy 排序
+                orderBy 谁 1/-1(正序或倒序)
+
+    自定义过滤器：
+            vue.filter(name,function(input,参数1...){
+
+                })
+            时间转换器
+
+            过滤html标记：
+                双向过滤器:
+                Vue.filter("filterHtml",{
+                    read:function(input){//model-view
+                     return input.replace(/[^<+]>/g,'');
+                     },
+                write:function(val){//view-model
+                console.log(val);
+                    }
+                });
+-------------------------------------------------------------
+指令：就是扩展了html标签
+v-text
+v-for
+v-html 
+    自定义指令：
+        Vue.directive(指令名称，function(){})
+    指令名称：v-red->red
+    
+    *注意：指令必须以v-开头，函数里的要省略v-
+

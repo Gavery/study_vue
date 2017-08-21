@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<style type="text/css">
+		[v-cloak]:{
+		display: none;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		// var vm=new Vue({
+			// 	// el:"#box",  vm.$mount("#box");
+			// 	data:{
+				// 		msg:'<strong>hello world</strong>',
+				// 		a:1
+			// 	},
+		// computed: {
+	// 一个计算属性的 getter
+				// b: function () {
+	// `this` 指向 vm 实例
+				// return this.a + 1
+				// }
+				// 	b:{
+					// 		//默认是get函数
+					// 		get:function(){
+						// 			return this.a+1;
+					// 		},
+					// 		set:function(val){
+						// 			this.a=val;
+					// 		}
+				// 	}
+			// }
+				// 	created:function(){
+						// 		alert("实例已经创建");
+				// 	},
+				// 	beforeCompile:function(){
+						// 		alert("编译之前");
+				// 	},
+				// 	compiled:function(){
+						// 		alert("编译之后");
+				// 	},
+				// 	ready:function(){
+						// 		alert("插入到文档中");
+				// 	},
+				// 	beforeDestroy:function(){
+						// 		alert("销毁之前");
+				// 	},
+				// 	destroyed:function(){
+						// 		alert("销毁之后");
+				// 	}
+		// });
+		
+		// document.onclick=function(){
+				// 	  vm.$destroy();
+		// }
+			// 给属性b赋值
+			// document.onclick=function(){
+				// 	vm.b=101;
+			// }
+			
+	//vue实例的一些小方法
+			// console.log(vm.$el);
+			// vm.$el.style.backgroundColor="red";
+			// console.log(vm.$data);
+			// vm.$mount("#box");//手动挂载
+			//
+			//
+			
+			var vm=new Vue({
+				aa:2,//自定义属性
+				show:function(){
+					// alert(1);
+				},
+				data:{
+					arr:['apple','pear','orange']
+				},
+				methods:{
+				add:function(){
+					this.arr.push("tomato");
+				}
+			}
+			}).$mount("#box");
+			// console.log(vm.$options.aa);
+				// vm.$options.show();
+				// console.log(vm.$log);
+			}
+	</script>
+	<body>
+		<div id="box" v-cloak>
+			<span>{{msg}}</span><br>
+			<!-- 下面这个是为了解决网速慢出现花括号的现象 -->
+			<span v-text="msg"></span><br>
+			<span>{{{msg}}}</span><br>
+			<span v-html="msg"></span><br>
+			a==>{{a}}<br>
+			b==>{{b}}<br>
+					<input type="button" value="添加" @click='add' name="">
+			<ul>
+				<li v-for="value in arr" track-by="$index">{{value}}</li>
+			</ul>
+	
+		</div>
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>

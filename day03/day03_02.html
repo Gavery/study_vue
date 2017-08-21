@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<style type="text/css">
+		[v-cloak]:{
+		display: none;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		Vue.directive('red',function(){
+		this.el.style.background='red';
+	});
+			var vm=new Vue({
+			el:"#box",
+			data:{
+				msg:"a"
+			}
+		})
+	}
+	</script>
+	<body>
+		<div id="box" v-cloak>
+			<span v-red>jgjgh</span>
+		</div>
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>
