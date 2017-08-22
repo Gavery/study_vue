@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义指令</title>
+	</head>
+	<style type="text/css">
+		[v-cloak]{
+		display: none;
+		}
+		zns-red{
+			width: 100px;
+			background: gray;
+			height: 100px;
+			}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		Vue.directive('on').keyCodes.ctrl=17;
+		Vue.directive('on').keyCodes.myenter=13;
+			var vm=new Vue({
+			el:"#box",
+			data:{
+				msg:"blue",
+				a:111,
+				b:222,
+				json:{name:'strive',age:16}
+			},
+			methods:{
+				show:function(){
+					alert(1);
+				}
+			}
+		});
+		
+			vm.$watch("json",function(){
+				alert("json发生了改变");
+			},{deep:true});
+				document.onclick=function(){
+				// vm.a=1;
+				vm.json.name="aaa";
+
+			};
+			// vm.$watch("a",function(){
+			// 	alert("a的值发生了变化！！");
+			// 	this.b=this.a+100;
+			// })
+	}
+	</script>
+	<body>
+		<div id="box" v-cloak>
+			<input type="text" name="" @keydown.ctrl="show"><br>
+			<input type="text" @keydown.myenter="show|debounce 2000" name=""><br>
+			{{a}}<br>
+			{{b}}<br>
+			{{json|json}}
+
+		</div>
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>

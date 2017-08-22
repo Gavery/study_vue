@@ -56,7 +56,7 @@ vue实例简单方法：
 ------------------------------------------------------------------
 过滤器：
     capitalize     uppercase     currency.....
-
+    json  把json对象转化为字符串形式显示在页面中
     常用的过滤器：
         debounce   配合事件使用（键盘..） 延迟执行
         eg:<input type="" @keyup="show|debounce 2000" name="">
@@ -96,8 +96,28 @@ v-text
 v-for
 v-html 
     自定义指令：
-        Vue.directive(指令名称，function(){})
+        Vue.directive(指令名称，function(参数){});
+        <div v-red='参数'></div>
     指令名称：v-red->red
+        note:
+            v-red='msg'(这个msg当做定义的v-red中的函数的参数，来源于model中的参数)
     
     *注意：指令必须以v-开头，函数里的要省略v-
+-------------------------------------------------------------------------
+自定义元素指令
+-----------------------------------------------------
+@keydown.up
+@keydown.enter
+
+自定义键盘信息
+        eg:
+        Vue.directive('on').keyCodes.ctrl=17;
+        Vue.directive('on').keyCodes.myenter=13;
+---------------------------------------------------------------------
+监听数据变化：
+    vm.$el/$mount/$options/.....
+
+    vm.$watch(name,function)  浅监视
+    vm.$watch(name,function(){},{deep:true}) 深监视（比如监视一个对象（json。。。。））
+
 
