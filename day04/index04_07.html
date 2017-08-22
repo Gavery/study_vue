@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>动态组件</title>
+	</head>
+
+	<script type="text/javascript">
+	window.onload=function() {
+		var vm=new Vue( {
+			el:"#box",
+			data:{
+				a:'aaa'
+			},
+			components:{
+				"aaa":{
+					template:"<h2>我是a组件</h2>"
+				},
+				"bbb":{
+					template:"<h1>我是bbb组件</h2>"
+				}
+			}
+		
+		})
+	}
+	</script>
+	<body>
+		<div id="box">
+		<input type="button" @click="a='aaa'" value="aaa组件" name="">
+		<input type="button" @click="a='bbb'" value="bbb组件" name="">
+		<component :is="a"></component>	
+		</div>
+
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>

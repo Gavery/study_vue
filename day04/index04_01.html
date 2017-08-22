@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>component</title>
+	</head>
+	<style type="text/css">
+	
+	</style>
+	<script type="text/javascript">
+	window.onload=function() {
+
+		//全局组件
+		// var Aaa=Vue.extend({
+		// 	template:'<h3>我是一个模板</h3>'
+		// });
+
+		// Vue.component('aaa',Aaa);
+		// 
+		
+		var Aaa=Vue.extend({
+			//组件里的数据必须是函数形式，并且要返回一个json对象
+			data(){
+				return {
+					msg:"我是标题"
+				};
+			},
+			methods:{
+				change(){
+					alert(1)
+				}
+			},
+			template:'<h3 @click="change">{{msg}}</h3>'
+		});
+
+		Vue.component('aaa',Aaa);
+		
+
+
+
+
+		var vm=new Vue( {
+			el:"#box", 
+			data: {
+			}
+		})
+	}
+	</script>
+	<body>
+		<div id="box">
+		<aaa></aaa>
+		</div>
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>

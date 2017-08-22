@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>组件的另一种方式</title>
+	</head>
+	<style type="text/css">
+	
+	</style>
+	<script type="text/javascript">
+	window.onload=function() {
+
+		//全局组件
+		// Vue.component('my-aaa',{
+		// 	template:'<h3>hello<h3/>'
+		// });
+
+		var vm=new Vue( {
+			el:"#box",
+			//局部组件
+			components:{
+				'my-aaa':{
+					data(){
+						return {
+							msg:'hello'
+						}
+					},
+					template:"<h3>{{msg}}<h3/>"
+				}
+			}
+		})
+	}
+	</script>
+	<body>
+		<div id="box">
+		<my-aaa></my-aaa>
+		</div>
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>

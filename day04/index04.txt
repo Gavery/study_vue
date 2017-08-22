@@ -1,0 +1,117 @@
+bower->(前端的包管理工具)   相当于npm（主要用于后端）
+安装： npm install bower -g
+bower install <包名>
+bower uninstall <包名>
+bower info <包名>
+eg:
+bower install vue#1.0.28 (npm是vue@1.0.28)
+----------------------------------------------------
+
+vue->过渡（动画）
+
+    本质：css3的transtion,animation
+
+      动画：
+          <div id="div1" v-show="bSign" transition="fade"></div>
+
+
+          进入：
+          .fade-enter {
+                opacity: 0;
+                    }
+          离开：
+          .fade-leave {
+                opacity: 0;
+                transform: translateX(200px);
+                    }
+
+        animate.css库
+------------------------------------------------------------
+vue组件：
+        组件：一个大的对象
+
+    定义一个组件：
+    全局组件：
+        1.var App=Vue.extend({
+            template:""       ---------> 这儿的App就相当于vm 
+            })
+
+            Vue.component("aaa",App)
+    组件里面放数据：
+            data必须是函数的形式，函数必须返回一个对象（json）
+            函数：函数方式不变
+
+    局部组件(放到某个组价的内部)：
+
+            var vm=new Vue( {
+            el:"#box", 
+            data: {
+            },
+            //局部组件（只能在#box里面才能用）
+            components:{
+                aaa:Aaa
+            }
+            })
+-------------------------------------------------
+另一种编写组件的方式：
+        //全局组件
+        Vue.component('my-aaa',{
+            template:'<h3>hello<h3/>'
+        });
+
+        //局部组件
+        var vm=new Vue( {
+            el:"#box",
+            components:{
+                'my-aaa':{
+                    template:"<h3>hello<h3/>"
+                 }
+              }
+            })
+        }
+-----------------------------------------------
+配合模板：
+        第一种方式：
+                <script type="x-template" id="aaa">
+        <h2 @click="change"> 标题2-->{{msg}}</h2>
+        <ul>
+        <li>111</li>
+        <li>112</li>
+        <li>113</li>
+        </ul>
+         </script>
+        第二种方式：单独放到某个地方
+                <template id="aaa">
+                    <h1>标题1</h1>
+                     <ul>
+                    <li v-for="val in arr">
+                    {{val}}
+                    </li>
+                    </ul>
+                </template>
+--------------------------------------------------
+动态组件：
+        <component :is="组件名称"></component>
+------------------------------------------------------
+vue-devtools --->调试工具
+-------------------------------------------
+vue默认情况下，子组件没法访问父组件的数据
+组件间的通信：（推荐）
+    1,子组件获取父组件信息
+        props:['',''...]
+    2.父级获取子级的数据
+
+        子组件把自己的数据发送到父级
+            vm.$emit(事件名，数据)
+
+        父级通过自定义事件来接受发送过来的数据
+----------------------------------------------------
+
+
+
+
+
+
+
+note: html中的-在js中要变为驼峰命名法
+

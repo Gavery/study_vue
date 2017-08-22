@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="css/animate.css">
+	</head>
+	<style type="text/css">
+	[v-cloak] {
+		display: none;
+	}
+	#box{
+		width: 100px;
+		margin: 0 auto;
+	}
+	#div1 {
+		background: red;
+		height: 100px;
+		width: 100px;
+	}
+	.fade-transition {
+		transition: 1s all ease;
+	}
+	.fade-enter {
+		opacity: 0;
+	}
+	.fade-leave {
+		opacity: 0;
+		transform: translateX(200px);
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload=function() {
+		var vm=new Vue( {
+			el:"#box", 
+			data: {
+				bSign: true
+			}, 
+			methods: {
+				toggle() {
+					this.bSign=!this.bSign;
+				}
+			},
+			transitions:{//定义所有动画的名称
+				bounce:{
+					enterClass:'zoomInLeft',
+					leaveClass:'zoomOutRight'
+				}
+
+			}
+		}
+		)
+	}
+	</script>
+	<body>
+		<div id="box">
+			<input type="button" value="按钮" name="" @click="toggle">
+			<div id="div1" v-show="bSign" transition="bounce" class="animated">
+			</div>
+		</div>
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>

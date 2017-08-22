@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>父子组件（父获取子数据）</title>
+	</head>
+
+
+	<script type="text/javascript">
+	window.onload=function() {
+		var vm=new Vue( {
+			el:"#box",
+			data:{
+				a:'aaa'
+			},
+			components:{
+				//父组件
+				"aaa":{
+					data(){
+						return {
+							msg:'我是父组件a的数据',
+							msg2:111
+						}
+					},
+					template:"#aaa",
+					components:{
+						//子组件
+						'bbb':{
+							// props:{
+							// 	'm':String,
+							// 	msg:number
+							// },
+							props:['m','mMsg2'],
+							template:'<h3>bbbbb-->{{m}},{{mMsg2}}</h3>'
+						}
+					}
+				}	
+			}
+		
+		})
+	}
+	</script>
+
+	<template id="aaa">
+		<h1>111111 ---->{{msg}},{{msg2}}</h1>
+		<bbb :m="msg" :m-msg2="msg2"></bbb>
+	</template>
+
+
+	<body>
+		<div id="box">
+		<aaa></aaa>
+		</div>
+
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>

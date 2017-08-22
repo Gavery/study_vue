@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>template</title>
+	</head>
+	<style type="text/css">
+	
+	</style>
+	<script type="x-template" id="aaa">
+		<h2 @click="change"> 标题2-->{{msg}}</h2>
+		<ul>
+		<li>111</li>
+		<li>112</li>
+		<li>113</li>
+		</ul>
+	</script>
+	<script type="text/javascript">
+	window.onload=function() {
+
+		var vm=new Vue( {
+			el:"#box",
+			components:{
+				'my_aaa':{
+					data(){
+						return {
+							msg:"welcome"
+						}
+					},
+					methods:{
+						change(){
+							this.msg='changed'
+						}
+					},
+					template:'#aaa'
+
+				}
+			}	
+		})
+	}
+	</script>
+	<body>
+		<div id="box">
+		<my_aaa></my_aaa>
+		</div>
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>局部组件</title>
+	</head>
+	<style type="text/css">
+	
+	</style>
+	<script type="text/javascript">
+	window.onload=function() {
+
+		var Aaa=Vue.extend({
+			template:'<h3>{{msg}}</h3>',
+			data(){
+				return {
+					msg:'ddd'
+				}
+			}
+		});
+
+		//放在这儿是全局组件
+		// Vue.component("aaa",Aaa);
+
+
+		var vm=new Vue( {
+			el:"#box", 
+			data: {
+			},
+			//局部组件（只能在#box里面才能用）
+			components:{
+				'aaa':Aaa
+			}
+		})
+	}
+	</script>
+	<body>
+		<div id="box">
+		<aaa></aaa>
+		</div>
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>
