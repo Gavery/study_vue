@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>slot插槽</title>
+	</head>
+
+
+	<script type="text/javascript">
+	window.onload=function() {
+		var vm=new Vue( {
+			el:"#box",
+			data:{
+				a:'aaa'
+			},
+			components:{
+				//父组件
+				"aaa":{
+					data(){
+						return {
+							msg:'我是父组件a的数据'
+						}
+					},
+					template:"#aaa"
+					
+			}
+		}
+		})
+	}
+	</script>
+
+	<template id="aaa">
+	<h1>aaa</h1>
+<slot name="ul-slot">这是默认的情况</slot>
+<slot name="ol-solt"></slot>
+	<p>高嘉银</p>
+
+	</template>
+
+
+	<body>
+		<div id="box">
+		<aaa>
+			<ul slot="ul-slot">
+				<li>111</li>
+				<li>222</li>
+				<li>333</li>
+			</ul>
+			<ol slot="ol-solt">
+				<li>111</li>
+				<li>222</li>
+				<li>333</li>
+			</ol>
+		</aaa>
+		</div>
+
+		<script type="text/javascript" src="js/vue_1.28.min.js"></script>
+	</body>
+</html>

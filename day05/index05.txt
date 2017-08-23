@@ -1,0 +1,41 @@
+slot:
+	位置、槽口
+	作用: 占个位置
+
+	类似ng里面 transclude  （指令）
+--------------------------------------------------------------
+vue->SPA应用，单页面应用
+
+    vue-resouce  交互（ajax）
+    vue-router   路由
+                根据不同的url地址，出现不同的效果
+
+view:
+    <a v-link="{path:'/home'}">主页</a>
+    展示路由的内容：<router-view></router-view>
+路由跳转：
+    router.rediect（{
+    ‘/’:'/homt'
+    }）
+------------------------------------------------------
+路由嵌套（多层路由）：
+subRoutes:{
+    
+}
+        主页    /home
+                登录   /home/login
+                注册   /home/reg
+        新闻页  news
+------------------------------------
+路由的其他信息：
+        <template id="detail">
+            {{$route.params.id}}<br>//当前参数
+            {{$route.params|json}}
+            {{$route.path}}<br>//当前路径
+            {{$route.query|json}}//数据
+        </template>
+-----------------------------------------------------
+vue-loader:
+    nodejs
+    broserify 模块加载器，只能加载js
+    webpack  模块加载器
