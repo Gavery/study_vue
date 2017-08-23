@@ -1,3 +1,5 @@
+﻿			component组件讲解
+
 bower->(前端的包管理工具)   相当于npm（主要用于后端）
 安装： npm install bower -g
 bower install <包名>
