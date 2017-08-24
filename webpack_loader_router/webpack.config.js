@@ -1,0 +1,19 @@
+module.exports={
+	entry:"./main.js",
+	output:{
+		path:__dirname,//当前路径(相当于绝对路径)
+		filename:"dist/build.js"
+	},
+	module:{
+		loaders:[
+			{test:/\.vue$/,loader:'vue-loader'},
+			{test:/\.js$/,loader:'babel-loader',
+			exclude:'/node_modules/',
+			query:{
+				presets:['es2015']
+			}
+		}
+			
+		]
+	}
+}

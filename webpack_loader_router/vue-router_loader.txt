@@ -1,0 +1,26 @@
+vue-loader和vue-router配合使用：
+路由：
+        vue-router   
+            版本查看：npm info vue-router
+                     bower info vue-router
+        使用版本：0.7.13 
+
+配合vue-loader使用：
+      1.下载vue-loader模块  cnpm install vue-loader@0.7.13 -D
+      2.在main.js文件中引入vue-loader文件夹  
+      3.main.js中要加 Vue.use(VueRouter); //vueRouter是基于vue开发，所以要加这句话
+      4.配置路由  
+          var router=new VueRouter();
+          router.map({
+          路由规则
+          })  
+      5.开启路由     
+            router.start(App,'#app')
+
+-------------------------------------------------
+
+路由嵌套：
+    和前面学习的一样
+---------------------------------------------------
+项目上线：
+    npm run build （webpack -p）  项目打包
