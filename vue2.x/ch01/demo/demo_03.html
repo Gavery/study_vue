@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>循环</title>
+	</head>
+			<script type="text/javascript" src="../vue2.x/vue.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			new Vue({
+				el:'#box',
+				data:{
+					// list:['width','height','border']
+					list:{
+						a:'apple',
+						b:'banana',
+						c:'orange'
+					}
+				},
+				methods:{
+					add(){
+						this.list.push('background');
+					}
+				}
+		})
+		}
+	</script>
+	<body>
+
+		<div id="box">
+	<!-- 	<input type="button" value="添加" @click="add" name=""> -->
+		<ul>
+		<!-- 	<li v-for="(val,index) in list">{{val}}{{index}}</li> -->
+			<li v-for="(val,key) in list" :key="index">{{val}}  {{key}}</li>
+		</ul>
+		</div>
+
+	</body>
+</html>

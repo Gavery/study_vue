@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+			<script type="text/javascript" src="../vue2.x/vue.js"></script>
+	<script type="text/javascript">
+	//1.x的写法（2.0不能用）
+	// Vue.extend('aaa',{
+		// 	template:'<h4>这是组件</h4>'
+	// });
+	// Vue.component('my-aaa',Aaa);
+	
+	//2.0中可以使用
+		// Vue.component("my-aaa",{
+		//      template:'#tem'
+	 //         });
+	 //         
+	         
+	  //2.0推出的组件写法
+	  	 var Home={
+	  	 		template:'#tem'
+	  	 };
+	  	 //也需要进行挂载才能使用（全局使用）
+	  	 // Vue.component('my-aaa',Home);
+
+		window.onload=function(){
+			new Vue({
+				el:'#box',
+				data:{
+					msg:'welcome vue2.0'
+				},
+				components:{
+					'my-aaa':Home//局部使用
+				}
+			});
+		}
+	</script>
+	<body>
+	<template id='tem'>
+	<div id="">
+			<h3>hello</h3>
+		<strong>我是加粗</strong>
+	</div>
+	</template>
+		<div id="box">
+			<my-aaa></my-aaa>
+			{{msg}}
+		</div>
+
+	</body>
+</html>
