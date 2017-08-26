@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>父组件和子组件</title>
+	</head>
+			<script type="text/javascript" src="../vue2.x/vue.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			new Vue({
+				el:'#box',
+				data:{
+					// a:'我是父组件的数据',
+					giveDate:{
+						a:'我是父组件数据'
+					}
+				},
+				components:{
+					'child-com':{
+						props:['msg'],
+						template:"#child",
+						methods:{
+							change(){
+								this.msg.a='被改变了'
+							}
+						}
+					}
+				}
+		})
+		}
+	</script>
+	<body>
+		<template id="child">
+			<div>
+				<h3>我是子组件</h3>
+				<input type="button" @click="change" value="按钮" name="">
+							{{msg.a}}
+			</div>
+		</template>
+		<div id="box">
+		父级---》{{giveDate.a}}
+
+		<!-- 绑定了一个属性msg(里面包含父组件的msg的数据key值),然后把它绑定到子组件的props属性
+		上面，这样子组件就可以获取父组件的数据 -->
+		<child-com :msg='giveDate'></child-com>
+		</div>
+
+	</body>
+</html>

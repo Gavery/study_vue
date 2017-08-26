@@ -1,0 +1,34 @@
+Vue动画
+vue路由
+---------------------------------------------
+transition
+        之前   属性
+        现在   组件形式
+---------------------------------------------
+"ch04/demo_01.html"      
+
+        <transition name='fade'>
+            运动东西（元素，属性，路由）
+        </transition>
+
+        class定义：
+        .fade-enter{}  //初始状态
+        .fade-enter-active{}  //变化成什么样
+
+        .fade-leave{}  //
+        .fade-leave-active{}  //变化成什么样（消失的时候）
+    自带的一些事件比较有用
+
+
+如何animate.css配合用？
+            <transition enter-active-class="animated bounceInLeft" leave-active-class="animated zoomOutRight"> 
+                <p v-show="show"></p>
+            </transition> or 
+                <transition enter-active-class="bounceInLeft" leave-active-class="zoomOutRight"> 
+                <p v-show="show" class="animated"></p>
+            </transition>
+        如果要多个元素一起动画就要用：
+                <transition-group enter-active-class="animated bounceInLeft" leave-active-class="animated zoomOutRight"> 
+                <p v-show="show" :key="1"></p>
+                <p v-show="show" :key="2"></p>
+               </transition-group>

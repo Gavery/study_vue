@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>父组件和子组件</title>
+	</head>
+			<script type="text/javascript" src="../vue2.x/vue.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			new Vue({
+				el:'#box',
+				data:{
+					// a:'我是父组件的数据',
+					giveDate:{
+						a:'我是父组件数据'
+					}
+				},
+				components:{
+					'child-com':{
+						data(){
+							return {
+								b:''
+							}
+						},
+						props:['msg'],
+						template:"#child",
+						mounted(){
+							this.b=this.msg.a;
+						},
+						methods:{
+							change(){
+								// this.msg.a='被改变了'
+								this.b='ccc'
+							}
+						}
+					}
+				}
+		})
+		}
+	</script>
+	<body>
+		<template id="child">
+			<div>
+				<h3>我是子组件</h3>
+				<input type="button" @click="change" value="按钮" name="">
+							{{b}}
+			</div>
+		</template>
+		<div id="box">
+		{{giveDate.a}}
+		<child-com :msg='giveDate'></child-com>
+		</div>
+
+	</body>
+</html>

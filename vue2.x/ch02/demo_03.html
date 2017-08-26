@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>单一事件管理组件通信</title>
+	</head>
+	<script type="text/javascript" src="../vue2.x/vue.js"></script>
+	<script type="text/javascript">
+	//准备一个空的实例对象
+	var Event=new Vue();//必须是全局的，要每个组件都能访问得到
+
+	var A={
+		template:`
+		<div>
+		<h3>我是A组件-->{{a}}</h3>
+		<input type="button" value="把A数据给C" @click="send"/>
+		</div>
+		`,
+		data(){
+			return {
+				a:'我是A数据'
+			}
+		},
+		methods:{
+			send(){
+				Event.$emit('a-msg',this.a);
+			}
+		}
+	};
+		var B={
+		template:`
+		<div>
+		<h3>我是B组件-->{{b}}</h3>
+		<input type="button" value="把B数据给C" @click="send"/>
+		</div>
+		`,
+		data(){
+			return {
+				b:'我是B数据'
+			}
+		},
+		methods:{
+			send(){
+				Event.$emit('b-msg',this.b);
+			}
+		}
+	};
+		var C={
+		template:`
+		<div><h3>我是C组件</h3> <strong>{{a}}</strong><br><strong>{{b}}</strong></div>`,
+		data(){
+			return {
+			a:'',
+			b:''
+		}
+		},
+		mounted(){
+			// var _this=this;
+			console.log('c组件加载完毕');
+			//接受A组件的数据
+			Event.$on('a-msg',function(a){
+				this.a=a;
+			}.bind(this));
+			//接受B组件的数据
+			Event.$on('b-msg',function(b){
+				this.b=b;
+			}.bind(this))
+		}	
+			
+	};
+		window.onload=function(){
+			new Vue({
+				el:'#box',
+				data:{},
+				methods:{
+				},
+				components:{
+					'com-a':A,
+					'com-b':B,
+					'com-c':C
+				}
+	
+		})
+		}
+	</script>
+	<body>
+		<div id="box">
+			<com-a></com-a>
+			<com-b></com-b>
+			<com-c></com-c>
+		</div>
+	</body>
+</html>

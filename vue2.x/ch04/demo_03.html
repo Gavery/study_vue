@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>过渡配合animate的使用</title>
+		<link rel="stylesheet" type="text/css" href="../css/animate.css">
+	</head>
+	<style type="text/css">
+		p{
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin: 0 auto;
+		}
+	</style>
+	<script type="text/javascript" src="../vue2.x/vue.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			new Vue({
+				el:'#box',
+				data:{
+					show:false
+				},
+				methods:{
+	
+				}
+		})
+		}
+	</script>
+	<body>
+		<div id="box">
+			<input type="button" value="隐藏" @click="show=!show" name="">
+			<transition enter-active-class="animated bounceInLeft" leave-active-class="animated zoomOutRight"> 
+				<p v-show="show"></p>
+			</transition>
+		</div>
+	</body>
+</html>
